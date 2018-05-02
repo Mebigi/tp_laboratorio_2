@@ -32,7 +32,12 @@ int buscarPorDni(EPersona [], int, long int);
 
 void cargarPersona(EPersona [], int);
 
+
+void ordenarListadoPersonas (EPersona [], int );
+
 void imprimirListadoPersonas (EPersona [], int );
+
+void GraficoListadoPersonas (EPersona [], int );
 
 
 

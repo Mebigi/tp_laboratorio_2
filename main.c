@@ -96,10 +96,14 @@ int main()
 
                 break;
             case 3:
+
+                ordenarListadoPersonas(listadoPersonas, TAM);
+
                 imprimirListadoPersonas(listadoPersonas, TAM);
 
                 break;
             case 4:
+                 GraficoListadoPersonas(listadoPersonas, TAM);
                 break;
             case 5:
                 seguir = 'n';
