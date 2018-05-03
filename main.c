@@ -59,7 +59,7 @@ int main()
 
 
         printf("\nIngrese una opcion del Menu: ");
-        scanf("%d",&opcion);
+        opcion = IngresarEntero(1, 5);
 
         switch(opcion)
         {
@@ -78,8 +78,8 @@ int main()
             case 2:
 
                 printf("Ingresar el DNI de la Persona: \n");
-                fflush(stdin);
-                scanf("%ld", &dni);
+                dni= IngresarLongEntero(1,99999999);
+
 
                 index = buscarPorDni(listadoPersonas, TAM, dni);
 

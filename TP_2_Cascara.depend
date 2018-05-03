@@ -12,15 +12,16 @@
 	<stdlib.h>
 	"funciones.h"
 
-1525293523 source:c:\1ercuatrimestretecnicatura\tp_laboratorio_2\funciones.c
+1525377182 source:c:\1ercuatrimestretecnicatura\tp_laboratorio_2\funciones.c
 	"funciones.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 
-1525275319 c:\1ercuatrimestretecnicatura\tp_laboratorio_2\funciones.h
+1525377172 c:\1ercuatrimestretecnicatura\tp_laboratorio_2\funciones.h
 
-1525281684 source:c:\1ercuatrimestretecnicatura\tp_laboratorio_2\main.c
+1525373815 source:c:\1ercuatrimestretecnicatura\tp_laboratorio_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
