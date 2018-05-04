@@ -33,11 +33,12 @@ int buscarPorDni(EPersona [], int, long int);
 /**
  * Carga los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona que posee las variables char nombre, int edad y long int dni.
  * @param lista el array se pasa como parametro.
+ * @param subindice en el array
  * @param tamaño del array.
 
  */
 
-void cargarPersona(EPersona [], int);
+void cargarPersona(EPersona [], int, int);
 
 /**
  * Ordena por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona que posee las variables char nombre, int edad y long int dni.
@@ -88,15 +89,13 @@ int IngresarEntero(int, int);
 
 int validarEntero (int, int, int);
 
-/** \brief leer un numero long entero ingresado comprendido entre el minimo valor y el maximo valor
-
- * \param minimo valor
- * \param maximo valor
+/** \brief lee un nuemro ingresado (DNI sin puntos) en una cadena de carceres de longitud 9 y
+llama la funcion validar si es un numero lo coniverte a long entero
  * \return un long entrero
  *
  */
 
-long int IngresarLongEntero(long int, int);
+long int IngresarDNI();
 
 /** \brief valida un numero long entero ingresado se encuatre dentro de un rango
  * \param minimo valor entero
@@ -105,7 +104,7 @@ long int IngresarLongEntero(long int, int);
  *
  */
 
-long int validarLongEntero (long int, int, int);
+long int esNumerolong(char [], int);
 
 /** \brief valida que se haya ingresado un dato char que sea una letra
  *
@@ -117,7 +116,10 @@ long int validarLongEntero (long int, int, int);
 
 int esTexto(char []);
 
+int esNumero(char [], int );
 
+
+char* FormatoNombre(char [], int );
 
 
 

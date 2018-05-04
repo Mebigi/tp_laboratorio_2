@@ -5,6 +5,28 @@
 #include <ctype.h>
 
 
+
+void cargarDatosHardCode(EPersona lista[])
+{
+
+
+
+    long int dni[15]= {24083235,39457791,27775664,51789936,36896235,24083231,39457792,27775663,51789936,36896234,22083235,33457791,24775664,55789936,37896235};
+    char nombre[15][50]= {"Mercedes Bigi","Micaela Colella","Galo Matos","Martin Gerbasi","Paula Bigi","Facundo Musil","Gabriela Perez","Lucia Rodriguez","Adrian Alzaroli","Viviana Musil","Pablo Callejo","Alejandra Arrue", "Laura Lertora","Hugo Viere", "Aldo Liendo"};
+    unsigned int edad[15]= {43,22,40,36,35,38,20,30,32,17,16,16,14,11,10};
+    int estado[15]= {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+
+    for(int i=0; i<15; i++)
+    {
+        strcpy(lista[i].nombre, nombre[i]);
+        lista[i].dni=dni[i];
+        lista[i].edad=edad[i];
+        lista[i].estado=estado[i];
+
+    }
+}
+
+
 int obtenerEspacioLibre(EPersona lista[], int tam)
 {
     int index = -1;
@@ -23,16 +45,27 @@ int obtenerEspacioLibre(EPersona lista[], int tam)
 
 
 
-void cargarPersona(EPersona lista[], int index)
+void cargarPersona(EPersona lista[], int index, int tam)
 {
-
+    int controlarDni;
+    long int dni=0;
     char estexto;
 
 
-    printf("Ingrese DNI: ");
+    dni = IngresarDNI();
 
-    lista[index].dni= IngresarLongEntero(1000000,99999999);
 
+    controlarDni = buscarPorDni(lista, 20, dni);
+
+    if (controlarDni != -1)
+    {
+         printf("El DNI ingresado ha sido resgistrado anteriormente");
+
+    }
+    if(controlarDni == -1 && dni > 0)
+    {
+
+    lista[index].dni=dni;
 
     fflush(stdin);
 
@@ -53,18 +86,30 @@ void cargarPersona(EPersona lista[], int index)
 
         fflush(stdin);
     printf("\nIngrese Edad: ");
-    lista[index].edad=IngresarLongEntero(1,150); // segun Google 146 años el hombre mas viejo
+    lista[index].edad=IngresarEntero(1,150); // segun Google 146 años el hombre mas viejo
 
 
 
     lista[index].estado = 1;
 
+
+      }
+
 }
+
+
 
 void imprimirListadoPersonas (EPersona lista[], int tam)
 {
     int i;
     int flag= 0;
+
+    for(int i=0; i<tam; i++)
+    {
+    strcpy(lista[i].nombre, FormatoNombre(lista[i].nombre, tam));
+    }
+
+    ordenarListadoPersonas(lista, tam);
 
 
 
@@ -95,26 +140,6 @@ void imprimirListadoPersonas (EPersona lista[], int tam)
 
 
 
-void cargarDatosHardCode(EPersona lista[])
-{
-
-
-
-    long int dni[15]= {24083235,39457791,27775664,51789936,36896235,24083231,39457792,27775663,51789936,36896234,22083235,33457791,24775664,55789936,37896235};
-    char nombre[15][50]= {"Mercedes Bigi","Micaela Colella","Galo Matos","Martin Gerbasi","Paula Bigi","Facundo Musil","Gabriela Perez","Lucia Rodriguez","Adrian Alzaroli","Viviana Musil","Pablo Callejo","Alejandra Arrue", "Laura Lertora","Hugo Viere", "Aldo Liendo"};
-    unsigned int edad[15]= {43,22,40,36,35,38,20,30,32,17,16,16,14,11,10};
-    int estado[15]= {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-
-    for(int i=0; i<15; i++)
-    {
-        strcpy(lista[i].nombre, nombre[i]);
-        lista[i].dni=dni[i];
-        lista[i].edad=edad[i];
-        lista[i].estado=estado[i];
-
-    }
-}
-
 
 int buscarPorDni(EPersona lista[], int tam, long int dni)
 {
@@ -142,6 +167,8 @@ void ordenarListadoPersonas(EPersona lista[], int tam )
 {
     EPersona aux[tam];
 
+
+
     for(int i=0; i<tam-1; i++)
     {
 
@@ -159,9 +186,6 @@ void ordenarListadoPersonas(EPersona lista[], int tam )
                 }
 
 
-
-
-
             }
 
 
@@ -170,6 +194,40 @@ void ordenarListadoPersonas(EPersona lista[], int tam )
     }
 
 }
+
+
+char* FormatoNombre(char nombre[], int tam)
+{
+
+    //transformar nombre apellido en min en Nombre Apellido
+    int len;
+
+    strlwr(nombre);
+
+    nombre[0]=toupper(nombre[0]);
+
+    len = strlen(nombre);
+
+    for(int j=1; j<len; j++)
+    {
+
+        //if (nombreyapellido[i-1] == ' ')
+        if(isspace(nombre[j]))
+
+         {
+             nombre[j+1]=toupper(nombre[j+1]);
+         }
+
+    }
+     return nombre;
+
+    }
+
+
+
+
+
+
 
 void GraficoListadoPersonas (EPersona lista[], int tam )
 {
@@ -252,7 +310,7 @@ void GraficoListadoPersonas (EPersona lista[], int tam )
     }
     printf("  __|_________________________\n");
     printf("     <18   19-35    >35\n\n");
-    printf("Gráfico para una estadística de %d personas con edad menor a 18, %d personas con edades entre 19 y 35, y %d personas con edades mayores a 35.\n", w,k,j);
+    printf("Gr%cfico para una estad%cstica de %d personas con edad menor a 18, %d personas con edades entre 19 y 35, y %d personas con edades mayores a 35.\n", 160,161,w,k,j);
 
 
 
@@ -293,34 +351,104 @@ int validarEntero (int dato, int min, int max)
 
 }
 
-long int IngresarLongEntero(long int min, int max)
-{
-    long int entero;
 
-    fflush(stdin);
-    scanf("%ld",&entero);
-    entero = validarLongEntero(entero, min, max);
+
+
+
+
+
+
+
+
+
+long int IngresarDNI()
+{
+    char numero[9];
+    long int entero;
+    int esnum=0;
+
+    do
+    {
+        printf("Ingrese DNI: ");
+        fflush(stdin);
+        gets(numero);
+
+               if(strlen(numero) >= 7 && strlen(numero) < 9)
+        {
+             esnum = esNumerolong(numero, 9);
+        }
+        else {
+
+             printf("Error, ");
+        }
+
+
+    }while (esnum == 0);
+
+    entero = atol(numero);
 
     return entero;
 }
 
 
-
-
-long int validarLongEntero (long int dato, int min, int max)
+long int esNumerolong(char numero[], int tam)
 {
-    while(dato < min || dato > max)
-    {
 
-        fflush(stdin);
-        printf("Dato no v%clido reingresar:\n", 160);
-        scanf("%ld", &dato);
+    long int esnum = 0;
+
+    int len = strlen(numero);
+
+    for (int i=0; i<len; i++)
+    {
+       if (isdigit(numero[i]))
+       {
+           esnum = 1;
+       }
+       else {
+
+        esnum = 0;
+        break;
+
+       }
+
+
 
     }
 
-    return dato;
+     return esnum;
 
 }
+
+
+
+int esNumero(char numero[], int tam)
+{
+
+    int esnum = 0;
+
+    int len = strlen(numero);
+
+    for (int i=0; i<len; i++)
+    {
+       if (isdigit(numero[i]))
+       {
+           esnum = 1;
+       }
+       else {
+
+        esnum = 0;
+        break;
+
+       }
+
+
+
+    }
+
+     return esnum;
+
+}
+
 
 
 
@@ -332,23 +460,26 @@ int esTexto(char texto[])
 
     int len = strlen(texto);
 
-    for (int i=0; i<len; i++)
+    if(len > 1)
     {
-        if (isalpha(texto[i]))
-        {
-            estexto = 1;
-        }
-        else
-        {
+         for (int i=0; i<len; i++)
+            {
+                if (isalpha(texto[i])|| isspace(texto[i]))
+                {
+                    estexto = 1;
+                }
+                else
+                {
+                    estexto = 0;
+                    break;
+                }
 
-            estexto = 0;
-            break;
-
-        }
 
 
-
+            }
     }
+
+
 
     return estexto;
 

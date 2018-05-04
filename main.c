@@ -54,11 +54,11 @@ int main()
         printf("1- Agregar persona\n");
         printf("2- Borrar persona\n");
         printf("3- Imprimir lista ordenada por  nombre\n");
-        printf("4- Imprimir grafico de edades\n\n");
+        printf("4- Imprimir gr%cfico de edades\n\n", 160);
         printf("5- Salir\n");
 
 
-        printf("\nIngrese una opcion del Menu: ");
+        printf("\nIngrese una opcion del Men%c: ", 163);
         opcion = IngresarEntero(1, 5);
 
         switch(opcion)
@@ -67,7 +67,7 @@ int main()
                 index= obtenerEspacioLibre(listadoPersonas, TAM);
                 if (index != -1)
                 {
-                    cargarPersona(listadoPersonas, index);
+                    cargarPersona(listadoPersonas, index, TAM);
                 }
                else{
                     printf("No hay mas espacio para cargar persona");
@@ -78,14 +78,14 @@ int main()
             case 2:
 
                 printf("Ingresar el DNI de la Persona: \n");
-                dni= IngresarLongEntero(1,99999999);
+                dni= IngresarDNI();
 
 
                 index = buscarPorDni(listadoPersonas, TAM, dni);
 
                 if (index != -1)
                 {
-                   printf("Se borro el registro con DNI Nro: %ld", dni);
+                   printf("Se borr%c el registro con DNI Nro: 162, %ld", dni);
                    listadoPersonas[index].dni = 0;//
                    listadoPersonas[index].estado = 0;//
                 }
@@ -97,7 +97,7 @@ int main()
                 break;
             case 3:
 
-                ordenarListadoPersonas(listadoPersonas, TAM);
+
 
                 imprimirListadoPersonas(listadoPersonas, TAM);
 
