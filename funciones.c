@@ -6,6 +6,7 @@
 
 
 
+
 void cargarDatosHardCode(EPersona lista[])
 {
     long int dni[15]= {24083235,39457791,27775664,51789936,36896235,24083231,39457792,27775663,51789936,36896234,22083235,33457791,24775664,55789936,37896235};
@@ -56,41 +57,41 @@ void cargarPersona(EPersona lista[], int index, int tam)
 
     if (controlarDni != -1)
     {
-         printf("El DNI ingresado ha sido resgistrado anteriormente");
+        printf("El DNI ingresado ha sido resgistrado anteriormente");
 
     }
     if(controlarDni == -1 && dni > 0)
     {
 
-    lista[index].dni=dni;
+        lista[index].dni=dni;
 
-    fflush(stdin);
+        fflush(stdin);
 
 
         printf("\nIngrese Nombre: ");
         gets(lista[index].nombre);
         estexto= esTexto(lista[index].nombre);
 
-    while (estexto==0)
-    {
-        printf("\nReigrese Nombre: ");
-        gets(lista[index].nombre);
-        estexto= esTexto(lista[index].nombre);
-    }
+        while (estexto==0)
+        {
+            printf("\nReigrese Nombre: ");
+            gets(lista[index].nombre);
+            estexto= esTexto(lista[index].nombre);
+        }
 
 
 
 
         fflush(stdin);
-    printf("\nIngrese Edad: ");
-    lista[index].edad=IngresarEntero(1,150); // segun Google 146 años el hombre mas viejo
+        printf("\nIngrese Edad: ");
+        lista[index].edad=IngresarEntero(1,150); // segun Google 146 años el hombre mas viejo
 
 
 
-    lista[index].estado = 1;
+        lista[index].estado = 1;
 
 
-      }
+    }
 
 }
 
@@ -103,7 +104,7 @@ void imprimirListadoPersonas (EPersona lista[], int tam)
 
     for(int i=0; i<tam; i++)
     {
-    strcpy(lista[i].nombre, FormatoNombre(lista[i].nombre, tam));
+        strcpy(lista[i].nombre, FormatoNombre(lista[i].nombre, tam));
     }
 
     ordenarListadoPersonas(lista, tam);
@@ -199,30 +200,32 @@ char* FormatoNombre(char nombre[], int tam)
     //transformar nombre apellido en min en Nombre Apellido
     int len;
 
-    strlwr(nombre);
+    //strlwr(nombre);
 
     nombre[0]=toupper(nombre[0]);
 
     len = strlen(nombre);
 
-    for(int j=1; j<len; j++)
+    for(int i=1; i<len; i++)
     {
 
+            nombre[i]=tolower(nombre[i]);
+
+    }
+
+
+    for(int j=1; j<len; j++)
+    {
         //if (nombreyapellido[i-1] == ' ')
         if(isspace(nombre[j]))
 
-         {
-             nombre[j+1]=toupper(nombre[j+1]);
-         }
+        {
+            nombre[j+1]=toupper(nombre[j+1]);
+        }
 
     }
-     return nombre;
-
-    }
-
-
-
-
+    return nombre;
+}
 
 
 
@@ -370,17 +373,19 @@ long int IngresarDNI()
         fflush(stdin);
         gets(numero);
 
-               if(strlen(numero) >= 7 && strlen(numero) < 9)
+        if(strlen(numero) >= 7 && strlen(numero) < 9)
         {
-             esnum = esNumerolong(numero, 9);
+            esnum = esNumerolong(numero, 9);
         }
-        else {
+        else
+        {
 
-             printf("Error, ");
+            printf("Error, ");
         }
 
 
-    }while (esnum == 0);
+    }
+    while (esnum == 0);
 
     entero = atol(numero);
 
@@ -397,56 +402,25 @@ long int esNumerolong(char numero[], int tam)
 
     for (int i=0; i<len; i++)
     {
-       if (isdigit(numero[i]))
-       {
-           esnum = 1;
-       }
-       else {
+        if (isdigit(numero[i]))
+        {
+            esnum = 1;
+        }
+        else
+        {
 
-        esnum = 0;
-        break;
+            esnum = 0;
+            break;
 
-       }
-
-
-
-    }
-
-     return esnum;
-
-}
-
-
-
-int esNumero(char numero[], int tam)
-{
-
-    int esnum = 0;
-
-    int len = strlen(numero);
-
-    for (int i=0; i<len; i++)
-    {
-       if (isdigit(numero[i]))
-       {
-           esnum = 1;
-       }
-       else {
-
-        esnum = 0;
-        break;
-
-       }
+        }
 
 
 
     }
 
-     return esnum;
+    return esnum;
 
 }
-
-
 
 
 
@@ -459,21 +433,21 @@ int esTexto(char texto[])
 
     if(len > 1)
     {
-         for (int i=0; i<len; i++)
+        for (int i=0; i<len; i++)
+        {
+            if (isalpha(texto[i])|| isspace(texto[i]))
             {
-                if (isalpha(texto[i])|| isspace(texto[i]))
-                {
-                    estexto = 1;
-                }
-                else
-                {
-                    estexto = 0;
-                    break;
-                }
-
-
-
+                estexto = 1;
             }
+            else
+            {
+                estexto = 0;
+                break;
+            }
+
+
+
+        }
     }
 
 

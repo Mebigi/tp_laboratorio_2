@@ -26,16 +26,16 @@
 	<stdlib.h>
 	"funciones.h"
 
-1525529691 source:c:\programacion1cuatri\tp_02\tp_laboratorio_2\funciones.c
+1525531440 source:c:\programacion1cuatri\tp_02\tp_laboratorio_2\funciones.c
 	"funciones.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 
-1525529597 c:\programacion1cuatri\tp_02\tp_laboratorio_2\funciones.h
+1525531080 c:\programacion1cuatri\tp_02\tp_laboratorio_2\funciones.h
 
-1525529768 source:c:\programacion1cuatri\tp_02\tp_laboratorio_2\main.c
+1525531080 source:c:\programacion1cuatri\tp_02\tp_laboratorio_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"

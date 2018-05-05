@@ -63,55 +63,55 @@ int main()
 
         switch(opcion)
         {
-            case 1:
-                index= obtenerEspacioLibre(listadoPersonas, TAM);
-                if (index != -1)
-                {
-                    cargarPersona(listadoPersonas, index, TAM);
-                }
-               else{
-                    printf("No hay mas espacio para cargar persona");
+        case 1:
+            index= obtenerEspacioLibre(listadoPersonas, TAM);
+            if (index != -1)
+            {
+                cargarPersona(listadoPersonas, index, TAM);
+            }
+            else
+            {
+                printf("No hay mas espacio para cargar persona");
 
-                }
+            }
 
-                break;
-            case 2:
+            break;
+        case 2:
 
-                printf("Ingresar el DNI de la Persona: \n");
-                dni= IngresarDNI();
-
-
-                index = buscarPorDni(listadoPersonas, TAM, dni);
-
-                if (index != -1)
-                {
-                   printf("Se borr%c el registro con DNI Nro: %ld", 162, dni);
-                   listadoPersonas[index].dni = 0;//
-                   listadoPersonas[index].estado = 0;//
-                }
-               else{
-                    printf("Persona no encontrada");
-
-                }
-
-                break;
-            case 3:
+            printf("Ingresar el DNI de la Persona: \n");
+            dni= IngresarDNI();
 
 
+            index = buscarPorDni(listadoPersonas, TAM, dni);
 
-                imprimirListadoPersonas(listadoPersonas, TAM);
+            if (index != -1)
+            {
+                printf("Se borr%c el registro con DNI Nro: %ld", 162, dni);
+                listadoPersonas[index].dni = 0;//
+                listadoPersonas[index].estado = 0;//
+            }
+            else
+            {
+                printf("Persona no encontrada");
 
-                break;
-            case 4:
-                 GraficoListadoPersonas(listadoPersonas, TAM);
-                break;
-            case 5:
-                seguir = 'n';
-                break;
+            }
+
+            break;
+        case 3:
+
+            imprimirListadoPersonas(listadoPersonas, TAM);
+
+            break;
+        case 4:
+            GraficoListadoPersonas(listadoPersonas, TAM);
+            break;
+        case 5:
+            seguir = 'n';
+            break;
         }
 
 
-       printf("\n\n");
+        printf("\n\n");
         system("pause");
         system("cls");
 

@@ -13,25 +13,34 @@ typedef struct {
 }EPersona;
 
 
+/**
+ * Carga datos preestablecidos para dinamizar las pruebas del programa
+ * @param tipo de dato estrcturado EPersona , con variables Nombre, edad, estado y dni como clave unica
+ * @return
+ */
+
 void cargarDatosHardCode(EPersona []);
 
 /**
- * Obtiene el primer indice libre del array.
+ * Obtiene el primer indice sin datos del array.
  * @param lista el array se pasa como parametro.
  * @return el primer indice disponible
  */
+
 int obtenerEspacioLibre(EPersona lista[], int);
 
 /**
- * Obtiene el indice que coincide con el dni pasado por parametro.
+ * Obtiene el indice que coincide con el dni (clave primaria) pasado por parametro.
  * @param lista el array se pasa como parametro.
  * @param dni el dni a ser buscado en el array.
  * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
  */
+
 int buscarPorDni(EPersona [], int, long int);
 
 /**
- * Carga los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona que posee las variables char nombre, int edad y long int dni.
+ * Carga los datos de personas en lista (Array) cuyo tipo de dato es una estrctura
+ * EPersona que posee las variables char nombre, int edad y long int dni.
  * @param lista el array se pasa como parametro.
  * @param subindice en el array
  * @param tamaño del array.
@@ -41,7 +50,8 @@ int buscarPorDni(EPersona [], int, long int);
 void cargarPersona(EPersona [], int, int);
 
 /**
- * Ordena por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona que posee las variables char nombre, int edad y long int dni.
+ * Ordena por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona
+ * que posee las variables char nombre, int edad y long int dni.
  * @param lista el array se pasa como parametro.
  * @param tamaño del array.
 
@@ -51,7 +61,7 @@ void ordenarListadoPersonas (EPersona [], int );
 
 
 /**
- * Imprime en consola por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona que posee las variables char nombre, int edad y long int dni.
+ * Imprime en consola por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona.
  * @param lista el array se pasa como parametro.
  * @param tamaño del array.
 
@@ -61,9 +71,9 @@ void imprimirListadoPersonas (EPersona [], int );
 
 /**
  * Grafica en consola por nombre los datos de personas en lista (Array) cuyo tipo de dato es una estrctura EPersona
- * El el Eje Y el numero de personas que
- * En el eje Y se marcarán la cantidad de personas en el grupo, y en el eje X el grupo dividido por edad en columnas <18 19-35 >35
- * @param tamaño del array.
+ * En el eje Y se marcarán la cantidad de personas en el grupo, y en el eje X el grupo dividido por edad
+ * en columnas <18 19-35 >35
+ * @param tamano del array.
 
  */
 
@@ -97,7 +107,7 @@ llama la funcion validar si es un numero lo coniverte a long entero
 
 long int IngresarDNI();
 
-/** \brief valida un numero long entero ingresado se encuatre dentro de un rango
+/** \brief valida un numero long entero ingresado se encuentre dentro de un rango
  * \param minimo valor entero
  * \param maximo valor entero
  * \return un long entero validado
@@ -116,7 +126,15 @@ long int esNumerolong(char [], int);
 
 int esTexto(char []);
 
-int esNumero(char [], int );
+
+/** \brief Da formato al campo nombre y apellido siendo en formato; Nombre Apellido.
+ *
+ * \param una cadena de caracteres
+ * \param tamaño cadena de caracteres
+ *
+ * \return cadena de caracteres con el formato
+ *
+ */
 
 
 char* FormatoNombre(char [], int );
