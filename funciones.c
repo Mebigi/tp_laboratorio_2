@@ -8,9 +8,6 @@
 
 void cargarDatosHardCode(EPersona lista[])
 {
-
-
-
     long int dni[15]= {24083235,39457791,27775664,51789936,36896235,24083231,39457792,27775663,51789936,36896234,22083235,33457791,24775664,55789936,37896235};
     char nombre[15][50]= {"Mercedes Bigi","Micaela Colella","Galo Matos","Martin Gerbasi","Paula Bigi","Facundo Musil","Gabriela Perez","Lucia Rodriguez","Adrian Alzaroli","Viviana Musil","Pablo Callejo","Alejandra Arrue", "Laura Lertora","Hugo Viere", "Aldo Liendo"};
     unsigned int edad[15]= {43,22,40,36,35,38,20,30,32,17,16,16,14,11,10};

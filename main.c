@@ -85,7 +85,7 @@ int main()
 
                 if (index != -1)
                 {
-                   printf("Se borr%c el registro con DNI Nro: 162, %ld", dni);
+                   printf("Se borr%c el registro con DNI Nro: %ld", 162, dni);
                    listadoPersonas[index].dni = 0;//
                    listadoPersonas[index].estado = 0;//
                 }
